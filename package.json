@@ -1,0 +1,31 @@
+{
+  "name": "generator-angularize",
+  "version": "1.0.0",
+  "description": "Angular yeoman generator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkorakas/Angular-generator.git"
+  },
+  "keywords": [
+    "angular",
+    "yeoman",
+    "generator"
+  ],
+  "author": "Thanos Korakas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkorakas/Angular-generator/issues"
+  },
+  "homepage": "https://github.com/tkorakas/Angular-generator#readme",
+  "dependencies": {
+    "mkdirp": "^0.5.1",
+    "yeoman-generator": "^0.21.1"
+  },
+  "files": [
+    "app"
+  ]
+}
