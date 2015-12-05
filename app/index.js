@@ -13,12 +13,16 @@ module.exports = generators.Base.extend({
 		mkdirp(appDir + '/js/services');
 		mkdirp(appDir + '/js/directives');
 		mkdirp(appDir + '/js/filters');
-		mkdirp(appDir + '/sass');
-		mkdirp(appDir + '/css');
+		mkdirp(appDir + '/style');
+		mkdirp(appDir + '/style/sass');
 		mkdirp(appDir + '/templates');
 
 		this.fs.copy(this.sourceRoot() + '/.bowerrc', destRoot + '/.bowerrc');
 		this.fs.copy(this.sourceRoot() + '/bower.json', destRoot + '/bower.json');
+
+	}
+	
+	initialazing: function(){
 
 	}
 });

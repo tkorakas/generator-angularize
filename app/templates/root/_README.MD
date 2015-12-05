@@ -1,4 +1,5 @@
 ## <%= appName %>
 
-<%= if (appDescription) %>
-<%= # appDescription %>
+<%= if (appDescription) { %>
+	<%= # appDescription %>
+<%= } %>	
