@@ -1,10 +1,10 @@
 {
-  "name": "",
-  "description": "",
-  "main": "",
+  "name": "<%= appName %>",
+  "description": "<%= appDescription %>",
+  "main": " <%= appMainFile %>",
   "moduleType": [],
   "authors": [
-    ""
+    "<%= appAuthor %> < <%= appEmail %> >"
   ],
   "license": "MIT",
   "homepage": "",
