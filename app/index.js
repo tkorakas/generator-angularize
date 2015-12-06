@@ -4,7 +4,12 @@ var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
 
 module.exports = generators.Base.extend({
-	_fileStructrure: function(){
+
+	constructor: function(){
+		generators.Base.apply(this, arguments);
+	},
+
+	_createFileStructrure: function(){
 		var destRoot = this.destinationRoot();
 		var appDir = destRoot + '/app';
 
@@ -17,12 +22,31 @@ module.exports = generators.Base.extend({
 		mkdirp(appDir + '/style/sass');
 		mkdirp(appDir + '/templates');
 
-		this.fs.copy(this.sourceRoot() + '/.bowerrc', destRoot + '/.bowerrc');
-		this.fs.copy(this.sourceRoot() + '/bower.json', destRoot + '/bower.json');
+		this.fs.copy(this.sourceRoot() + '/root/_.bowerrc', destRoot + '/.bowerrc');
+		this.fs.copy(this.sourceRoot() + '/root/_bower.json', destRoot + '/bower.json');
+	},
 
-	}
+	_createGruntFile: function(){
+		this.gruntfile.insertConfig('clean', 'files: ["dist"]');
+	},
 	
 	initialazing: function(){
 
+	},
+	prompting: function(){
+		var done = this.async();
+	    this.prompt({
+	      type    : 'input',
+	      name    : 'name',
+	      message : 'Your project name',
+	      default : this.appname // Default to current folder name
+	    }, function (answers) {
+	      this.log(answers.name);
+	      done();
+	    }.bind(this));
+	},
+	writing: function(){
+		this._createFileStructrure();
+		// this._createGruntFile();
 	}
 });
