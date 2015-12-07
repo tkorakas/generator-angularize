@@ -5,6 +5,12 @@
 </head>
 <body>
 	<!-- TODO: Choose between routers. -->
-	<ng-view></ng-view>
+	<% if (appNGRoute) { %>
+		<ng-view></ng-view>
+	<% } elseif(appUIRouter) { %>
+		<div ui-view></div>
+	<% } else { %>
+		<div ng-controller=""></div>
+	<% } %>
 </body>
 </html>

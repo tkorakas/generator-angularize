@@ -2,6 +2,8 @@
 
 var generators = require('yeoman-generator');
 var mkdirp = require('mkdirp');
+var yosay = require('yosay');
+var chalk = require('chalk');
 
 module.exports = generators.Base.extend({
 
@@ -30,23 +32,54 @@ module.exports = generators.Base.extend({
 		this.gruntfile.insertConfig('clean', 'files: ["dist"]');
 	},
 	
-	initialazing: function(){
-
+	initializing: function(){
+		var message = chalk.blue('Welcome to Angularize ' + chalk.red('A simple AngularJS generator.'));
+		this.log(yosay(message, {maxLength: 21}));
 	},
 	prompting: function(){
 		var done = this.async();
-	    this.prompt({
+	    this.prompt([{
 	      type    : 'input',
 	      name    : 'name',
-	      message : 'Your project name',
+	      message : 'Your project name:',
 	      default : this.appname // Default to current folder name
-	    }, function (answers) {
-	      this.log(answers.name);
+	    },{
+	    	type: 'input',
+	    	name: 'description',
+	    	message: 'Project description:'
+	    },{
+	    	type: 'input',
+	    	name: 'author',
+	    	message: 'Your name:'
+	    },{
+	    	type: 'input',
+	    	name: 'email',
+	    	message: 'Your email:'
+	    },{
+	    	type: 'input',
+	    	name: 'github/bitbucket',
+	    	message: 'Your project git repository:'
+	    },{
+	    	type: 'input',
+	    	name: 'version',
+	    	message: 'Project version:',
+	    	default: '0.0.0'
+	    },{
+	    	type: 'input',
+	    	name: 'license',
+	    	message: 'Project license type:',
+	    	default: 'MIT'
+	    },{
+	    	type: 'input',
+	    	name: 'website',
+	    	message: 'Your website:'
+	    }], function (answers) {
+	      this.appName = answers.name;
 	      done();
 	    }.bind(this));
 	},
 	writing: function(){
-		this._createFileStructrure();
+		// this._createFileStructrure();
 		// this._createGruntFile();
 	}
 });
