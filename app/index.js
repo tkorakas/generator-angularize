@@ -38,6 +38,7 @@ module.exports = generators.Base.extend({
 		mkdirp(appDir + '/js/directives');
 		mkdirp(appDir + '/js/filters');
 		mkdirp(appDir + '/style');
+		mkdirp(appDir + '/images');
 		if(this.cssExtension != 'less' && this.cssExtension != 'sass'){
 			mkdirp(appDir + '/style/' + this.cssExtension);
 		}
