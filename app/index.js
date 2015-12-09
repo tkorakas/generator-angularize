@@ -31,6 +31,7 @@ module.exports = generators.Base.extend({
                 appLicense: this.appLicense,
                 appGit: this.appGit,
                 appWebsite: this.appWebsite,
+				css: this.cssExtension,
             };
 		mkdirp(appDir + '/js');
 		mkdirp(appDir + '/js/controllers');
@@ -39,13 +40,14 @@ module.exports = generators.Base.extend({
 		mkdirp(appDir + '/js/filters');
 		mkdirp(appDir + '/style');
 		mkdirp(appDir + '/images');
+		mkdirp(appDir + '/tests');
 		if(this.cssExtension != 'less' && this.cssExtension != 'sass'){
 			mkdirp(appDir + '/style/' + this.cssExtension);
 		}
 		mkdirp(appDir + '/templates');
 
 		this.fs.copy(this.sourceRoot() + '/root/_.bowerrc', destRoot + '/.bowerrc');
-		this.fs.copy(this.sourceRoot() + '/root/_bower.json', appDir + '/bower.json');
+		this.fs.copy(this.sourceRoot() + '/root/_bower.json', destRoot + '/bower.json');
 		this.fs.copyTpl(this.sourceRoot() + '/root/_index.html', destRoot + '/index.html', templateContext);
 		this.fs.copyTpl(this.sourceRoot() + '/root/_app.' + this.jsExtension, appDir + '/app.' +  this.jsExtension, templateContext);
 		this.fs.copy(this.sourceRoot() + '/javascript/' + this.jsExtension + '/mainCtrl.' + this.jsExtension, appDir + '/js/controllers/mainCtrl.' +  this.jsExtension);
