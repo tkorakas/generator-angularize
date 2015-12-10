@@ -1,13 +1,17 @@
 {
   "name": "<%= appName %>",
   "description": "<%= appDescription %>",
-  "main": " <%= appMainFile %>",
+  "main": "index.html",
   "moduleType": [],
   "authors": [
     "<%= appAuthor %> < <%= appEmail %> >"
   ],
   "license": "MIT",
   "homepage": "",
+  "dependencies": {
+    "angular": "~1.4.8"<% angularLib.forEach(function(lib) { %>,
+    "<%= lib %>": "~1.4.8"<% }); %>
+  },
   "ignore": [
     "**/.*",
     "node_modules",

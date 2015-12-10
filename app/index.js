@@ -31,7 +31,16 @@ module.exports = generators.Base.extend({
             appLicense: this.appLicense,
             appGit: this.appGit,
             appWebsite: this.appWebsite,
-            css: this.cssExtension,
+            cssExtension: this.cssExtension,
+            coffee: this.jsExtension,
+            angularLib: [
+              "angular-aria",
+              "angular-animate",
+              "angular-messages",
+              "angular-resource",
+              "angular-sanitize",
+              "angular-touch"
+            ]
         };
 
         // Create folder structure.
@@ -44,15 +53,16 @@ module.exports = generators.Base.extend({
         mkdirp(appDir + '/images');
         mkdirp(appDir + '/tests');
         mkdirp(appDir + '/templates');
-
+        // Create style folder with subfolder named as css extension selected.
         if (this.cssExtension != 'less' && this.cssExtension != 'sass') {
             mkdirp(appDir + '/style/' + this.cssExtension);
         }
-
         this.fs.copy(this.sourceRoot() + '/root/_.bowerrc', destRoot + '/.bowerrc');
-        this.fs.copy(this.sourceRoot() + '/root/_bower.json', destRoot + '/bower.json');
+        this.fs.copyTpl(this.sourceRoot() + '/root/_bower.json', destRoot + '/bower.json', templateContext);
         this.fs.copyTpl(this.sourceRoot() + '/root/_index.html', appDir + '/index.html', templateContext);
         this.fs.copyTpl(this.sourceRoot() + '/root/_app.' + this.jsExtension, appDir + '/app.' + this.jsExtension, templateContext);
+        this.fs.copyTpl(this.sourceRoot() + '/root/_gulpfile.js', destRoot + '/gulpfile.js', templateContext);
+        this.fs.copyTpl(this.sourceRoot() + '/root/_package.json', destRoot + '/package.json', templateContext);
         this.fs.copy(this.sourceRoot() + '/javascript/' + this.jsExtension + '/mainCtrl.' + this.jsExtension, appDir + '/js/controllers/mainCtrl.' + this.jsExtension);
         if (this.option.less && this.option.sass) {
             this.fs.copy(this.sourceRoot() + '/styles/style.' + this.cssExtension, appDir + '/styles/' + this.cssExtension + 'style.' + this.cssExtension);
@@ -122,5 +132,9 @@ module.exports = generators.Base.extend({
     },
     writing: function () {
         this._createFileStructrure();
+    },
+    install: function () {
+        this.bowerInstall();
+        this.npmInstall();
     }
 });

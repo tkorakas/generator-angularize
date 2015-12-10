@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     less = require('gulp-less'),
     minifycss = require('gulp-minify-css'),
-    livereload = require('gulp-livereload'),
     del = require('del'),
     inject = require('gulp-inject'),
     livereload = require('gulp-livereload'),
@@ -28,7 +27,7 @@ var angular_order = [
   'app/dist/js/*.min.js',
   'app/dist/css/*.min.cs'
 ];
-<% if (coffee) { %>
+<% if (coffee == 'coffee') { %>
 gulp.task('coffee', function() {
   gulp.src(['./app/app.coffee', './app/js/**/*.coffee'])
     .pipe(coffee({bare: true}).on('error', gutil.log))
@@ -45,14 +44,14 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./app/dist/js'));
 });
 <% if (cssExtension == 'scss') { %>
-// Sasss
+// Sass
 gulp.task('styles', function () {
   gulp.src('./app/styles/*.scss')
   .pipe(rename({ suffix: '.min'}))
   .pipe(sass({outputStyle: 'compressed'}))
   .pipe(gulp.dest('./app/dist/css'));
 });
-<% else if (cssExtension == 'less') { %>
+<% } else if (cssExtension == 'less') { %>
   // Less
 gulp.task('styles', function () {
   return gulp.src('./app/styles/**/*.less')
@@ -61,8 +60,8 @@ gulp.task('styles', function () {
     .pipe(minifycss())
     .pipe(gulp.dest('./app/dist/css'));
 });
-<% } else %>
-// Less
+<% } else { %>
+// css
 gulp.task('styles', function () {
   return gulp.src('./app/styles/**/*.less')
     .pipe(rename({ suffix: '.min'}))
