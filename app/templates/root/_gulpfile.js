@@ -1,12 +1,12 @@
 var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
-    coffee = require('gulp-coffee'),
+    rename = require('gulp-rename'), <% if (coffee == 'coffee') { %>
+    coffee = require('gulp-coffee'), <% } %>
     gutil = require('gulp-util'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify'),
-    sass = require('gulp-sass'),
-    less = require('gulp-less'),
+    notify = require('gulp-notify'),<% if (cssExtension == 'sass') { %>
+    sass = require('gulp-sass'),<% } else if (cssExtension == 'less') { %>
+    less = require('gulp-less'), <% } %>
     minifycss = require('gulp-minify-css'),
     del = require('del'),
     inject = require('gulp-inject'),
