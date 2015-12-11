@@ -49,7 +49,6 @@ module.exports = generators.Base.extend({
         mkdirp(appDir + '/js/services');
         mkdirp(appDir + '/js/directives');
         mkdirp(appDir + '/js/filters');
-        mkdirp(appDir + '/style');
         mkdirp(appDir + '/images');
         mkdirp(appDir + '/tests');
         mkdirp(appDir + '/templates');
