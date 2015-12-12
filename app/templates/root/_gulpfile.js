@@ -14,19 +14,20 @@ var gulp = require('gulp'),
     server = require('gulp-server-livereload'),
     ngAnnotate = require('gulp-ng-annotate');
 
-var angular_order = [
-  'app/bower_components/**/angular.min.js',
-  'app/bower_components/**/angular-animate.min.js',
-  'app/bower_components/**/angular-aria.min.js',
-  'app/bower_components/**/angular-cookies.min.js',
-  'app/bower_components/**/angular-messages.min.js',
-  'app/bower_components/**/angular-resource.min.js',
-  'app/bower_components/**/angular-route.min.js',
-  'app/bower_components/**/angular-sanitize.min.js',
-  'app/bower_components/**/angular-touch.min.js',
-  'app/dist/js/*.min.js',
-  'app/dist/css/*.min.cs'
-];
+    var order = [
+      './app/bower_components/**/angular.min.js',
+      './app/bower_components/**/angular-animate.min.js',
+      './app/bower_components/**/angular-aria.min.js',
+      './app/bower_components/**/angular-cookies.min.js',
+      './app/bower_components/**/angular-messages.min.js',
+      './app/bower_components/**/angular-resource.min.js',
+      './app/bower_components/**/angular-route.min.js',
+      './app/bower_components/**/angular-sanitize.min.js',
+      './app/bower_components/**/angular-touch.min.js',
+      'app/app.js',
+      'app/js/**/*.js',
+      'app/styles/*.css'
+    ];
 <% if (coffee == 'coffee') { %>
 gulp.task('coffee', function() {
   gulp.src(['./app/app.coffee', './app/js/**/*.coffee'])
@@ -73,9 +74,9 @@ gulp.task('styles', function () {
 
 gulp.task('inject', function () {
   var target = gulp.src('./app/index.html');
-  var sources = gulp.src(angular_order, {read:false}, {relative: true});
-  return target.pipe(inject(sources))
-    .pipe(gulp.dest(''));
+  var sources = gulp.src(order);
+  return target.pipe(inject(sources), {read:false}, {relative: true})
+    .pipe(gulp.dest('./app'));
 });
 
 // Default task
@@ -110,4 +111,9 @@ gulp.task('watch', function() {
   // Watch any files in dist/, reload on change
   gulp.watch(['./app/**']).on('change', livereload.changed);
 
+});
+
+// Clean
+gulp.task('clean', function() {
+  return del('dist');
 });

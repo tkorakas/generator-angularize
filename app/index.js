@@ -23,7 +23,7 @@ module.exports = generators.Base.extend({
         var destRoot = this.destinationRoot();
         var appDir = destRoot + '/app';
         var templateContext = {
-            appName: this.appName,
+            appName: this.appName.split(" ").join(""),
             appDescription: this.appDescription,
             appVersion: this.appVersion,
             appAuthor: this.appAuthor,
@@ -52,10 +52,6 @@ module.exports = generators.Base.extend({
         mkdirp(appDir + '/images');
         mkdirp(appDir + '/tests');
         mkdirp(appDir + '/templates');
-        // Create style folder with subfolder named as css extension selected.
-        if (this.cssExtension != 'less' && this.cssExtension != 'sass') {
-            mkdirp(appDir + '/style/' + this.cssExtension);
-        }
         this.fs.copy(this.sourceRoot() + '/root/_.bowerrc', destRoot + '/.bowerrc');
         this.fs.copyTpl(this.sourceRoot() + '/root/_bower.json', destRoot + '/bower.json', templateContext);
         this.fs.copyTpl(this.sourceRoot() + '/root/_index.html', appDir + '/index.html', templateContext);
