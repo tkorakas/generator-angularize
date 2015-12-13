@@ -33,15 +33,15 @@ module.exports = generators.Base.extend({
             appWebsite: this.appWebsite,
             cssExtension: this.cssExtension,
             coffee: this.jsExtension,
-            angularLib: [
-              "angular-aria",
-              "angular-animate",
-              "angular-messages",
-              "angular-resource",
-              "angular-sanitize",
-              "angular-touch"
-            ]
+            angularLib: this.angLibs,
+            angRouter: this.angRouter == 'angular-ui-router' ? 'ui.router' : 'ngRoute',
+            angInclude: this.angLibs.map(function(lib){
+              var library = lib.split('-');
+              var capitalize = library[1].charAt(0).toUpperCase() + library[1].slice(1);
+              return 'ng' + capitalize;
+            })
         };
+        templateContext.angularLib.push(this.angRouter);
 
         // Create folder structure.
         mkdirp(appDir + '/js');
@@ -113,6 +113,40 @@ module.exports = generators.Base.extend({
                 type: 'input',
                 name: 'website',
                 message: 'Your website:'
+            },{
+              type: 'checkbox',
+              name: 'libs',
+              message: 'Which angular libraries would you like to use?',
+              choices: [{
+                name: 'Angular aria',
+                value: 'angular-aria'
+              },{
+                name: 'Angular animate',
+                value: 'angular-animate'
+              },{
+                name: 'Angular messages',
+                value: 'angular-messages'
+              },{
+                name: 'Angular resoure',
+                value: 'angular-resource'
+              },{
+                name: 'Angular sanitize',
+                value: 'angular-sanitize'
+              },{
+                name: 'Angular touch',
+                value: 'angular-touch'
+              }]
+            },{
+              type: 'list',
+              name: 'router',
+              message: 'Which angular router would you like to use?',
+              choices: [{
+                name: 'ngRoute',
+                value: 'angular-route'
+              },{
+                name: 'UI Router',
+                value: 'angular-ui-router'
+              }], default: 1
             }], function (answers) {
             this.appName = answers.name;
             this.appDescription = answers.description;
@@ -122,6 +156,8 @@ module.exports = generators.Base.extend({
             this.appVersion = answers.version;
             this.appLicense = answers.license;
             this.appWebsite = answers.website;
+            this.angLibs = answers.libs;
+            this.angRouter = answers.router;
             done();
         }.bind(this));
     },
@@ -130,6 +166,6 @@ module.exports = generators.Base.extend({
     },
     install: function () {
         this.bowerInstall();
-        this.npmInstall();
+        // this.npmInstall();
     }
 });

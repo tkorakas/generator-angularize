@@ -71,12 +71,11 @@ gulp.task('styles', function () {
 });
 <% } %>
 
-
 gulp.task('inject', function () {
-  var target = gulp.src('./app/index.html');
-  var sources = gulp.src(order);
-  return target.pipe(inject(sources), {read:false}, {relative: true})
-    .pipe(gulp.dest('./app'));
+ var target = gulp.src('./app/index.html');
+ // var sources = gulp.src(order);
+ return target.pipe(inject(gulp.src(order), {read:false, relative: true}))
+   .pipe(gulp.dest('./app'));
 });
 
 // Default task
