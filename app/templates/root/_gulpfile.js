@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     coffee = require('gulp-coffee'), <% } %>
     gutil = require('gulp-util'),
     concat = require('gulp-concat'),
-    notify = require('gulp-notify'),<% if (cssExtension == 'sass') { %>
+    notify = require('gulp-notify'),<% if (cssExtension == 'scss') { %>
     sass = require('gulp-sass'),<% } else if (cssExtension == 'less') { %>
     less = require('gulp-less'), <% } %>
     minifycss = require('gulp-minify-css'),
@@ -59,7 +59,7 @@ gulp.task('styles_build', function () {
   .pipe(rename({ suffix: '.min'}))
   .pipe(sass({outputStyle: 'compressed'}))
   .pipe(gulp.dest('./app/dist/css'));
-
+});
   gulp.task('styles', function () {
     return gulp.src('./app/styles/*.scss')
     .pipe(sass({outputStyle: 'expanded'}))
@@ -127,10 +127,10 @@ function notifyLiveReload(event) {
 
 gulp.task('watch', function() {
   gulp.watch(['./app/styles/*.scss', './app/styles/*.less'], ['styles']);
-  gulp.watch('*.html', notifyLiveReload);
+  gulp.watch('./app/**/*.html', notifyLiveReload);
   gulp.watch('./app/styles/*.css', notifyLiveReload);<% if (coffee == 'coffee') { %>
   gulp.watch('./app/**/*.coffee', ['coffee']); <% } %>
   gulp.watch('./app/**/*.js', notifyLiveReload);
 });
 
-gulp.task('default', gulpsync.sync([<% if (cssExtension != 'css') { %>'styles', <% } %> <% if (coffee == 'coffee') { %> 'coffee', <% } %>'index', 'express', 'livereload', 'watch']));
+gulp.task('default', gulpsync.sync([<% if (cssExtension != 'css') { %>'styles', <% } %><% if (coffee == 'coffee') { %>'coffee', <% } %>'index', 'express', 'livereload', 'watch']));
