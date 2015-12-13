@@ -105,22 +105,10 @@ gulp.task('webserver', function() {
 });
 // Watch
 gulp.task('watch', function() {
-
-  // Watch .scss files
   gulp.watch('./app/styles/**/*.less', ['less']);
-
-  // Watch .js files
   gulp.watch('./app/**/*.js', ['scripts']);
-
-  // Watch image files
-  // gulp.watch('src/images/**/*', ['images']);
-
-  // Create LiveReload server
   livereload.listen();
-
-  // Watch any files in dist/, reload on change
   gulp.watch(['./app/**']).on('change', livereload.changed);
-
 });
 
 // Clean
