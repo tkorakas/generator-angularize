@@ -6,7 +6,12 @@
 	<!-- endinject -->
 </head>
 <body>
-	<!-- TODO: Choose between routers. -->
+	<% if (angRouter == 'ui.router') { %>
+		<div ui-view></div>
+		<% }else{ %>
+		<div ng-view></div>
+		<% } %>
+
 	<!-- inject:js -->
 	<!-- endinject -->
 	<!-- Google Analytics -->

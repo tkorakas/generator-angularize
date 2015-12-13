@@ -58,6 +58,7 @@ module.exports = generators.Base.extend({
         this.fs.copyTpl(this.sourceRoot() + '/root/_app.' + this.jsExtension, appDir + '/app.' + this.jsExtension, templateContext);
         this.fs.copyTpl(this.sourceRoot() + '/root/_gulpfile.js', destRoot + '/gulpfile.js', templateContext);
         this.fs.copyTpl(this.sourceRoot() + '/root/_package.json', destRoot + '/package.json', templateContext);
+        this.fs.copyTpl(this.sourceRoot() + '/views/_main.html', appDir + '/templates/main.html', templateContext);
         this.fs.copy(this.sourceRoot() + '/javascript/' + this.jsExtension + '/mainCtrl.' + this.jsExtension, appDir + '/js/controllers/mainCtrl.' + this.jsExtension);
         if (this.option.less && this.option.sass) {
             this.fs.copy(this.sourceRoot() + '/styles/style.' + this.cssExtension, appDir + '/styles/' + this.cssExtension + 'style.' + this.cssExtension);
@@ -119,22 +120,28 @@ module.exports = generators.Base.extend({
               message: 'Which angular libraries would you like to use?',
               choices: [{
                 name: 'Angular aria',
-                value: 'angular-aria'
+                value: 'angular-aria',
+                checked: true
               },{
                 name: 'Angular animate',
-                value: 'angular-animate'
+                value: 'angular-animate',
+                checked: false
               },{
                 name: 'Angular messages',
-                value: 'angular-messages'
+                value: 'angular-messages',
+                checked: true
               },{
                 name: 'Angular resoure',
-                value: 'angular-resource'
+                value: 'angular-resource',
+                checked: false
               },{
                 name: 'Angular sanitize',
-                value: 'angular-sanitize'
+                value: 'angular-sanitize',
+                checked: true
               },{
                 name: 'Angular touch',
-                value: 'angular-touch'
+                value: 'angular-touch',
+                checked: false
               }]
             },{
               type: 'list',
@@ -166,6 +173,6 @@ module.exports = generators.Base.extend({
     },
     install: function () {
         this.bowerInstall();
-        // this.npmInstall();
+        this.npmInstall();
     }
 });

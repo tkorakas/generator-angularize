@@ -16,6 +16,8 @@ var gulp = require('gulp'),
 
     var order = [
       './app/bower_components/**/angular.min.js',
+      './app/bower_components/**/angular-ui-router.min.js',
+      './app/bower_components/**/angular-route.min.js',
       './app/bower_components/**/angular-animate.min.js',
       './app/bower_components/**/angular-aria.min.js',
       './app/bower_components/**/angular-cookies.min.js',
@@ -29,10 +31,18 @@ var gulp = require('gulp'),
       'app/styles/*.css'
     ];
 <% if (coffee == 'coffee') { %>
-gulp.task('coffee', function() {
-  gulp.src(['./app/app.coffee', './app/js/**/*.coffee'])
+gulp.task('coffee', [], function() {
+  gulp.start('coffee_app', 'coffee_scripts');
+});
+gulp.task('coffee_app', function() {
+  gulp.src('./app/app.coffee')
     .pipe(coffee({bare: true}).on('error', gutil.log))
     .pipe(gulp.dest('./app/'))
+});
+gulp.task('coffee_scripts', function() {
+  gulp.src('./app/js/**/*.coffee')
+    .pipe(coffee({bare: true}).on('error', gutil.log))
+    .pipe(gulp.dest('./app/js/'))
 });
 <% } %>
 
@@ -79,11 +89,12 @@ gulp.task('inject', function () {
 });
 
 // Default task
-gulp.task('default', [], function() {
+gulp.task('default', ['clean'], function() {
   gulp.start('styles', 'scripts', 'inject', 'images');
 });
 
 gulp.task('webserver', function() {
+  gulp.start('inject');
   gulp.src('./app')
     .pipe(server({
       livereload: true,
