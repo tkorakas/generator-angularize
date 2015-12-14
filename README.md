@@ -30,7 +30,7 @@
 `yo angularize --coffee`
 
 ## Sass --sass
-> .scss extention
+> .scss extention      
 `yo angularize --sass`
 
 ## Less --less
