@@ -27,10 +27,11 @@
 
 # Options
 ## Coffeescript --coffee    
-`yo angularize --coffee`
+`yo angularize --coffee || yo angularize:controller "name" --coffee`
 
 ## Sass --sass
-> .scss extention      
+> .scss extention  
+
 `yo angularize --sass`
 
 ## Less --less
