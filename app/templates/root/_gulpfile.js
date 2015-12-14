@@ -91,7 +91,6 @@ gulp.task('styles_build', function () {
 
 gulp.task('index', function () {
  var target = gulp.src('./app/index.html');
- // var sources = gulp.src(order);
  return target.pipe(inject(gulp.src(order), {read:false, relative: true}))
    .pipe(gulp.dest('./app'));
 });
