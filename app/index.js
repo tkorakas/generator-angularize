@@ -23,7 +23,7 @@ module.exports = generators.Base.extend({
     var destRoot = this.destinationRoot();
     var appDir = destRoot + '/app';
     var templateContext = {
-      appName: this.appName.split(" ").join(""),
+      appName: this.appName.split(" ").join("").toLowerCase(),
       appDescription: this.appDescription,
       appVersion: this.appVersion,
       appAuthor: this.appAuthor,

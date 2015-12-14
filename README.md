@@ -26,7 +26,7 @@
 `yo angularize:filter "name"`
 
 # Options
-## Coffeescript --coffee
+## Coffeescript --coffee    
 `yo angularize --coffee`
 
 ## Sass --sass
