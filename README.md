@@ -3,12 +3,12 @@
 > Angular yeoman generator simple for my needs.
 
 # Usage
-* [Create project](#Project)
-* [Controller](#Controller)
-* [Service](#Service)
-* [Directive](#Directive)
-* [Filter](#Filter)
-* [Options](#Options)
+* [Create project](#project)
+* [Controller](#controller)
+* [Service](#service)
+* [Directive](#directive)
+* [Filter](#filter)
+* [Options](#options)
 
 ## Project
  `yo angularize`
