@@ -3,12 +3,12 @@
 > Angular yeoman generator simple for my needs.
 
 # Usage
-* [Create project](github.com/tkorakas/generator-angularize#Project)
-* [Controller](github.com/tkorakas/generator-angularize#Controller)
-* [Service](github.com/tkorakas/generator-angularize#Service)
-* [Directive](github.com/tkorakas/generator-angularize#Directive)
-* [Filter](github.com/tkorakas/generator-angularize#Filter)
-* [Options](github.com/tkorakas/generator-angularize#Options)
+* [Create project](#project)
+* [Controller](#controller)
+* [Service](#service)
+* [Directive](#directive)
+* [Filter](#filter)
+* [Options](#options)
 
 ## Project
  `yo angularize`
