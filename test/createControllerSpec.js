@@ -39,11 +39,11 @@ describe('Expeted to create a controller with coffeescript', function() {
   it('should create a coffee file', function(done) {
     assert.file(path.join(__dirname, './temp/app/js/controllers/test.coffee'));
     assert.fileContent(path.join(__dirname, './temp/app/js/controllers/test.coffee'), 'app.controller \'testCtrl\', ()->');
-    // fs.unlinkSync(path.join(__dirname, './temp/app/js/controllers/test.coffee'))
-    // fs.rmdirSync(path.join(__dirname, './temp/app/js/controllers'));
-    // fs.rmdirSync(path.join(__dirname, './temp/app/js'));
-    // fs.rmdirSync(path.join(__dirname, './temp/app'));
-    // fs.rmdirSync(path.join(__dirname, './temp'));
+    fs.unlinkSync(path.join(__dirname, './temp/app/js/controllers/test.coffee'))
+    fs.rmdirSync(path.join(__dirname, './temp/app/js/controllers'));
+    fs.rmdirSync(path.join(__dirname, './temp/app/js'));
+    fs.rmdirSync(path.join(__dirname, './temp/app'));
+    fs.rmdirSync(path.join(__dirname, './temp'));
     done();
   });
 });
