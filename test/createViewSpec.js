@@ -9,12 +9,10 @@ var fs = require("fs");
 
 describe('Expeted to create a view', function() {
   before(function(done) {
-    helpers.testDirectory(path.join(__dirname, './temp'), function() {
-      helpers.run(path.join(__dirname, '../view'))
-        .inDir(path.join(__dirname, './temp/app/'))
-        .withArguments('test')
-        .on('end', done);
-    });
+    helpers.run(path.join(__dirname, '../view'))
+      .inDir(path.join(__dirname, './temp/app/'))
+      .withArguments('test')
+      .on('end', done);
 
   })
   it('should create a html file', function(done) {
