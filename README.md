@@ -2,7 +2,7 @@
 
 > Angular yeoman generator simple for my needs.
 
-Install generator-anguarize from npm
+Install generator-anguarize from
 [npm](https://www.npmjs.com/package/generator-angularize)
 
 # Usage
@@ -43,7 +43,13 @@ Install generator-anguarize from npm
 
 ## Gulp
 I have create some gulp tasks to build and run your angular project.   
-`gulp`     
+* `gulp` (Default task)         
+* `gulp coffee` (Compile coffescript)         
+* `gulp styles` (Compile less, sass)   
+* `gulp index`  (Inject scripts to index)    
+* `gulp clean`  (Delete build files. Compiled and minified scripts and styles)    
+* `gulp watch`  (Watch and compile if any file change)    
+
 Will compile less,sass or coffee if are installed and will create a http server  
 to work. Livereload works also when you change any file.    
 Coffee, less and sass will compiled and webserver will reload automatically.
