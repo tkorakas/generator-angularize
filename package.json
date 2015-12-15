@@ -1,6 +1,6 @@
 {
   "name": "generator-angularize",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Angular yeoman generator",
   "main": "index.js",
   "scripts": {
