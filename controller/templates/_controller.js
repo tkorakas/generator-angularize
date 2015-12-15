@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('<%= name %>Ctrl', function(){
+app.controller('<%= controllerName %>Ctrl', function(){
 
 });

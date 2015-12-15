@@ -10,14 +10,15 @@ module.exports = generators.generators.NamedBase.extend({
   createController: function(){
     var destRoot = this.destinationRoot().split('/');
     var appDir = '/'
+    var context = {
+      name: this.name.split(" ").join("").toLowerCase()
+    };
+    var jsExtension = this.options.coffee ? '.coffee' : '.js';
     if (destRoot.indexOf('app') != -1) {
       destRoot.slice(1, destRoot.indexOf('app')).forEach(function(folder) {
         appDir += folder + '/'
       });
-      var context = {
-        name: this.name.split(" ").join("").toLowerCase()
-      };
-      var jsExtension = this.options.coffee ? '.coffee' : '.js';
+
       this.fs.copyTpl(this.sourceRoot() + '/_service' + jsExtension, appDir + 'app/js/services/' + context.name + jsExtension, context);
     } else {
       var context = {

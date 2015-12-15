@@ -1,2 +1,2 @@
 'use strict';
-app.controller '<%= name %>Ctrl', ()->
+app.controller '<%= controllerName %>Ctrl', ()->

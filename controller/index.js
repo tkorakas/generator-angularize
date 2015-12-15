@@ -10,20 +10,21 @@ module.exports = generators.generators.NamedBase.extend({
   createController: function(){
     var destRoot = this.destinationRoot().split('/');
     var appDir = '/'
+    var context = {
+      controllerName: this.name.split(" ").join("").toLowerCase()
+    };
+
+    var jsExtension = this.options.coffee ? '.coffee' : '.js';
     if (destRoot.indexOf('app') != -1) {
       destRoot.slice(1, destRoot.indexOf('app')).forEach(function(folder) {
         appDir += folder + '/'
       });
-      var context = {
-        name: this.name.split(" ").join("").toLowerCase()
-      };
-      var jsExtension = this.options.coffee ? '.coffee' : '.js';
-      this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, appDir + 'app/js/controllers/' + context.name + jsExtension, context);
+      this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, appDir + 'app/js/controllers/' + context.controllerName + jsExtension, context);
     } else {
       var context = {
         viewName: this.name.split(" ").join("").toLowerCase()
       };
-      this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, this.destinationRoot() + '/app/js/controllers/' + context.name + jsExtension, context);
+      this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, this.destinationRoot() + '/app/js/controllers/' + context.controllerName + jsExtension, context);
     }
   }
 })
