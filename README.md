@@ -2,6 +2,8 @@
 
 > Angular yeoman generator simple for my needs.
 
+[angularize](https://youtu.be/f4OTS_1e2Es)
+
 Install generator-anguarize from
 [npm](https://www.npmjs.com/package/generator-angularize)
 
