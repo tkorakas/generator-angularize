@@ -20,9 +20,6 @@ module.exports = generators.generators.NamedBase.extend({
       });
       this.fs.copyTpl(this.sourceRoot() + '/_filter' + jsExtension, appDir + 'app/js/filters/' + context.name + jsExtension, context);
     } else {
-      var context = {
-        viewName: this.name.split(" ").join("").toLowerCase()
-      };
       this.fs.copyTpl(this.sourceRoot() + '/_filter' + jsExtension, this.destinationRoot() + '/app/js/filters/' + context.name + jsExtension, context);
     }
   }

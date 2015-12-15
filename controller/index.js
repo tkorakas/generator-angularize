@@ -2,12 +2,12 @@
 
 var generators = require('yeoman-generator');
 
-module.exports = generators.generators.NamedBase.extend({
+module.exports = generators.NamedBase.extend({
   constructor: function() {
     generators.NamedBase.apply(this, arguments);
     this.option('coffee');
   },
-  createController: function(){
+  _createController: function(){
     var destRoot = this.destinationRoot().split('/');
     var appDir = '/'
     var context = {
@@ -21,10 +21,10 @@ module.exports = generators.generators.NamedBase.extend({
       });
       this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, appDir + 'app/js/controllers/' + context.controllerName + jsExtension, context);
     } else {
-      var context = {
-        viewName: this.name.split(" ").join("").toLowerCase()
-      };
       this.fs.copyTpl(this.sourceRoot() + '/_controller' + jsExtension, this.destinationRoot() + '/app/js/controllers/' + context.controllerName + jsExtension, context);
     }
+  },
+  writing: function(){
+    this._createController();
   }
 })

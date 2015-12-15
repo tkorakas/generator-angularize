@@ -21,9 +21,6 @@ module.exports = generators.generators.NamedBase.extend({
 
       this.fs.copyTpl(this.sourceRoot() + '/_service' + jsExtension, appDir + 'app/js/services/' + context.name + jsExtension, context);
     } else {
-      var context = {
-        viewName: this.name.split(" ").join("").toLowerCase()
-      };
       this.fs.copyTpl(this.sourceRoot() + '/_service' + jsExtension, this.destinationRoot() + '/app/js/services/' + context.name + jsExtension, context);
     }
   }
