@@ -2,7 +2,7 @@
 
 > Angular yeoman generator simple for my needs.
 
-[![angularize](http://img.youtube.com/vi/f4OTS_1e2Es/3.jpg)](https://youtu.be/f4OTS_1e2Es)
+[![angularize](https://www.dropbox.com/s/7l4kpozglhf7frr/yeoman.png)](https://youtu.be/f4OTS_1e2Es)
 
 Install generator-anguarize from
 [npm](https://www.npmjs.com/package/generator-angularize)
