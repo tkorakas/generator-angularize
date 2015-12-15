@@ -2,7 +2,7 @@
 
 var generators = require('yeoman-generator');
 
-module.exports = generators.generators.NamedBase.extend({
+module.exports = generators.NamedBase.extend({
   constructor: function() {
     generators.NamedBase.apply(this, arguments);
     this.option('coffee');
