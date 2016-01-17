@@ -59,4 +59,3 @@ Coffee, less and sass will compiled and webserver will reload automatically.
 Have fun :)
 
 [My page](http://tkorakas.github.io)
-test
